@@ -60,6 +60,24 @@ message="""
 <td>""" + str(cpu_regex[0]) + """</td>
 <td>""" + str(cpu_speed) + """</td>
 <td>""" + str(cpu_load) + """</td>
+<td>""" + str(cpu_load) + """</td>
+<td><form onsubmit="Shutdown()">
+    <input value="Shutdown" type="submit" />
+  </form>
+</td>
+<td><form onsubmit="Restart()">
+    <input value="Restart" type="submit" />
+  </form>
+</td>
+  <script>
+    function Shutdown() {
+        alert(`Shutting Down`);
+    }
+    function Restart() {
+        alert(`Restart`);
+    }
+  </script>
+</td>
 </tr>
 """
 #--------------------------------------------------------
