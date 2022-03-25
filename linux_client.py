@@ -1,58 +1,46 @@
 import socket
-
-
-
 import os
 import re
-
 import shutil
 import psutil
 
+
 hostname = socket.gethostname()
-local_ip = socket.gethostbyname(hostname)
+local_ip = socket.gethostbyname(hostname) #ip address
 
 
 file=open('/proc/cpuinfo',"r")
-
-
 content=file.readlines()
-
-cpu=content[4]
-cpu_regex=re.findall(":([^\]]+)CPU", cpu)
-speed_regex=re.findall("\@([^\]]+)GHz", cpu)
+cpu=content[4] 
+cpu_regex=re.findall(":([^\]]+)CPU", cpu) #CPU name
+speed_regex=re.findall("\@([^\]]+)GHz", cpu) #CPU speed
 file.close()
 
 
 total, used, free = shutil.disk_usage("/")
+total=(total // (2**30)) #total RAM
+used=(used // (2**30))
+free=(free // (2**30)) #free RAM
 
 
 temp = os.popen('sensors')
 temp_output = temp.readlines()
-temp_regex=re.findall("\+([^\]]+)", temp_output[16])
-
+temp_regex=re.findall("\+([^\]]+)", temp_output[16]) #CPU temperature
 
 
 load = os.popen('uptime')
 load_output = load.read()
-#load_regex=re.findall("load average: 0\,([^\]]+)\,", load_output)
-load_regex=re.findall("load average: 0\,([0-9][0-9])", load_output)
+load_regex=re.findall("load average: 0\,([0-9][0-9])", load_output) #CPU load
 
-total=(total // (2**30))
-used=(used // (2**30))
-free=(free // (2**30))
-#hdd=str(psutil.virtual_memory().total /1000000)
-#hdd_regex = "{:.2f}".format(float(hdd)) 
 
 hdd_info = os.popen('df -h')
 hdd_output = hdd_info.readlines()
 hdd_regex=(hdd_output[7]).split()
-HD_regex=re.findall("([0-9]*)G", hdd_regex[2])
-HD_free_regex=re.findall("([0-9]*)G", hdd_regex[3])
-
+HD_regex=re.findall("([0-9]*)G", hdd_regex[2]) #total Hard Disk
+HD_free_regex=re.findall("([0-9]*)G", hdd_regex[3]) #free Hard Disk
 
 
 #--------------------------------------------------------
-
 message="""
 <tr>
 <td>"""+local_ip+"""</td>
@@ -88,7 +76,7 @@ except socket.error as e:
 res = ClientMultiSocket.recv(1024)
 while True:
    
-    ClientMultiSocket.send(message.encode())
+    ClientMultiSocket.send(message.encode()) #send message(HTML table)
     res = ClientMultiSocket.recv(1024)
     print(res.decode('utf-8'))
 ClientMultiSocket.close()
