@@ -73,7 +73,7 @@ try:
 except socket.error as e:
     print(str(e))
    
-res = ClientMultiSocket.recv(1024)
+#res = ClientMultiSocket.recv(1024)
 while True:
    
     ClientMultiSocket.send(message.encode()) #send message(HTML table)
