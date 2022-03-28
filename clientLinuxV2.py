@@ -98,5 +98,11 @@ ClientMultiSocket.send(message.encode()) #send message(HTML table)
 while True:
     #ClientMultiSocket.send(message.encode()) #send message(HTML table)
 	res = ClientMultiSocket.recv(2048)
-print(res.decode('utf-8'))
+	if res.decode() == "shutdown":
+		os.system("/sbin/shutdown +1")
+		print("Shutting Down")
+	if res.decode() == "restart":
+		os.system("/sbin/shutdown -r +1")
+		print("Restarting")
+	print(res.decode('utf-8'))
 #ClientMultiSocket.close()
