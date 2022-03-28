@@ -4,7 +4,12 @@ import re
 import shutil
 import psutil
 import tkinter
-
+#importing the datetime module
+from datetime import datetime
+#using the now function to get the date and time value
+date_time =datetime.now()
+#using strftime() to get the current time value
+current_time = date_time.strftime("%H:%M:%S")
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname) #ip address
 
@@ -44,6 +49,7 @@ HD_free_regex=re.findall("([0-9]*)M", hdd_regex[3]) #free Hard Disk
     
 message="""
 <tr>
+<td>"""+current_time+"""</td>
 <td>"""+local_ip+"""</td>
 <td>Linux</td>
 <td>"""+HD_regex[0]+"""000</td>
