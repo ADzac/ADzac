@@ -20,22 +20,22 @@ newfile.close()
 with open('info.txt', 'r') as f:
     l = f.readlines()
     
-    cpu = (l[139])
+    cpu = (l[142])
     cpu_regex=re.findall("([^\]]+)CPU", cpu) #CPU name
     
-    cpu_speed = (l[148])
+    cpu_speed = (l[151])
     cpu_speed = "{:.2f}".format(int(cpu_speed)/1000) #CPU speed
     
-    cpu_load = (l[157]) #CPU load
+    cpu_load = (l[160]) #CPU load
     
-    ram_size = (l[78])
+    ram_size = (l[81])
     ramsize_regex=re.findall("\:([^\]]+)M", ram_size) #total RAM
-    free_ram = (l[80])
+    free_ram = (l[83])
     freeram_regex=re.findall("\:([^\]]+)M", free_ram) #free RAM
     
     hd_size = (l[3])
     hd_size = "{:.0f}".format(float(hd_size)/1000000)  #total Hard Disk
-    hd_free = (l[12])
+    hd_free = (l[15])
     hd_free = "{:.0f}".format(float(hd_free)/1000000) #free Hard Disk
 
     
@@ -105,4 +105,3 @@ try:
 except KeyboardInterrupt or res.decode() == "shutdown" :
     ClientMultiSocket.close()
     print("Keyboard interrupt exception caught")
-    
