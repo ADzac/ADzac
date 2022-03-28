@@ -30,8 +30,8 @@ free=(free // (2**20)) #free RAM
 
 temp = os.popen('sensors')
 temp_output = temp.readlines()
-temp_regex=re.findall("\+([^\]]+)", temp_output[15]) #CPU temperature
-
+#temp_regex=re.findall("\+([^\]]+)", temp_output[15]) #CPU temperature
+temp_regex=re.findall("\+([^\]]+)\(", temp_output[2]) #CPU temperature
 
 hello="hello"
 
