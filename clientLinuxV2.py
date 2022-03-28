@@ -18,9 +18,9 @@ file.close()
 
 
 total, used, free = shutil.disk_usage("/")
-total=(total // (2**30)) #total RAM
-used=(used // (2**30))
-free=(free // (2**30)) #free RAM
+total=(total // (2**20)) #total RAM
+used=(used // (2**20))
+free=(free // (2**20)) #free RAM
 
 
 temp = os.popen('sensors')
@@ -91,6 +91,6 @@ ClientMultiSocket.send(message.encode()) #send message(HTML table)
 #res = ClientMultiSocket.recv(1024)
 while True:
     #ClientMultiSocket.send(message.encode()) #send message(HTML table)
-    res = ClientMultiSocket.recv(2048)
-    print(res.decode('utf-8'))
-ClientMultiSocket.close()
+	res = ClientMultiSocket.recv(2048)
+print(res.decode('utf-8'))
+#ClientMultiSocket.close()
