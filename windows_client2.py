@@ -98,6 +98,9 @@ try:
         if res.decode() == "shutdown" :
             os.system("shutdown /s /t 10")
             print("Shutting Down")
+        if res.decode() == "restart" :
+            os.system("shutdown /r /t 10")
+            print("Restarting")
             
 except KeyboardInterrupt or res.decode() == "shutdown" :
     ClientMultiSocket.close()
