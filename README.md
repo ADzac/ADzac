@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @ADzac
 - 👀 I’m interested in increasing my competent in back-end languages
-- 🌱 I’m currently learning Python
+- 🌱 I’m currently learning Python and C
 
 <!---
 ADzac/ADzac is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
